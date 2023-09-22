@@ -49,16 +49,32 @@ score.goto(0, 260)
 #Showing the score
 score.write("Player1 : 0 Player2: 0", align="center", font=("Courier", 20, "bold"))
 
-#def move_pad1_up():
+def move_pad1_up():
+    y = paddle1.ycor()
+    y += 15
+    paddle1.sety(y)
 
-#def move_pad1_down():
+def move_pad1_down():
+    y = paddle1.ycor()
+    y -= 15
+    paddle1.sety(y)
 
-#def move_pad2_down():
+def move_pad2_down():
+    y = paddle2.ycor()
+    y += 15
+    paddle2.sety(y)
 
-#def move_pad2_up():
+def move_pad2_up():
+    y = paddle2.ycor()
+    y -= 15
+    paddle2.sety(y)
 
-#add keystrokes
-
+# add keystrokes
+screen.listen()
+screen.onkeypress(move_pad1_up, "Left")
+screen.onkeypress(move_pad1_down, "Right")
+screen.onkeypress(move_pad2_up, "Up")
+screen.onkeypress(move_pad2_down, "Down")
 
 
 mainloop()
