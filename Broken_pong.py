@@ -11,7 +11,7 @@ screen = Screen()
 screen.title("Pong game")
 screen.setup(width=1000, height=500)
 screen.bgcolor("Black")         # TODO: Changed background colour
-# screen.tracer(0)                # TODO: Work out why this was suggested..
+screen.tracer(n=None, delay=None)                # TODO: Work out why this was suggested..
 # This is what caused the paddles and balls to disappear. Amended.
 
 # Create a ball - change this to something interesting - ball = pie
@@ -62,26 +62,26 @@ score.write("SCORE", align="center", font=("Arial", 26, "bold"))    # TODO: Chan
 # defining left paddle movements    # TODO: There is a better function to be made here once working
 def l_paddle_up():                  # TODO: Start of function at bottom
     y = left_paddle.ycor()
-    y = y + 90
+    y += 90
     left_paddle.sety(y)
 
 
 def l_paddle_down():
     y = left_paddle.ycor()
-    y = y - 90
+    y -= 90
     left_paddle.sety(y)
 
 
 # defining right paddle movements
 def r_paddle_up():
     y = right_paddle.ycor()
-    y = y + 90
+    y += 90
     right_paddle.sety(y)
 
 
 def r_paddle_down():
     y = right_paddle.ycor()
-    y = y - 90
+    y -= 90
     right_paddle.sety(y)
 
 
