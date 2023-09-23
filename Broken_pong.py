@@ -6,20 +6,21 @@ player1 = 0
 player2 = 0
 
 screen = Screen()
-s_width = 1000  # TODO: Added variables for screen w/h so easier to manipulate
-s_height = 500
+# s_width = 1000  # TODO: Added variables for screen w/h so easier to manipulate
+# s_height = 500
 screen.title("Pong game")
-screen.setup(width=s_width, height=s_height)
+screen.setup(width=1000, height=500)
 screen.bgcolor("Black")         # TODO: Changed background colour
-screen.tracer(0)                # TODO: Work out why this was suggested..
+# screen.tracer(0)                # TODO: Work out why this was suggested..
+# This is what caused the paddles and balls to disappear. Amended.
 
 # Create a ball - change this to something interesting - ball = pie
 ball = Turtle()
 ball.shape("circle")
 ball.color("green")
 ball.speed(0)
-# ball.penup()
-# ball.goto(0, 0)
+ball.penup()
+ball.goto(0, 0)
 ball_x_dir = 2      # TODO: This and line 23 changed from ball.dx/ball.dy
 ball_y_dir = -2
 
@@ -33,7 +34,7 @@ left_paddle.color("blue")
 left_paddle.shapesize(stretch_wid=5, stretch_len=1)
 left_paddle.penup()
 left_paddle.setpos(-350, 0)
-left_paddle.pendown()
+# left_paddle.pendown()     # TODO: Changed this to stop the paddle drawing a line when moving.
 left_paddle.dy = 0          # TODO: What is the point of this?
 
 # Create paddle 2
@@ -55,7 +56,7 @@ score.hideturtle()
 # Locating the scoreboard on top of the screen
 score.goto(0, 260)
 # Showing the score
-score.write("SCORE", align="centre", font=("Arial", 26, "bold"))    # TODO: Change this
+score.write("SCORE", align="center", font=("Arial", 26, "bold"))    # TODO: Changed spelling of centre to center.
 
 
 # defining left paddle movements    # TODO: There is a better function to be made here once working
@@ -74,7 +75,7 @@ def l_paddle_down():
 # defining right paddle movements
 def r_paddle_up():
     y = right_paddle.ycor()
-    y = y - 90
+    y = y + 90
     right_paddle.sety(y)
 
 
@@ -86,12 +87,13 @@ def r_paddle_down():
 
 # adding keystrokes
 screen.listen()
-screen.onkeypress(l_paddle_up, 'Up')
-screen.onkeypress(l_paddle_down, 'Down')
-screen.onkeypress(r_paddle_up, 'Right')
-screen.onkeypress(r_paddle_down, 'Left')
+screen.onkeypress(l_paddle_up, 'w') #TODO: 
+screen.onkeypress(l_paddle_down, 's') #TODO: Changed keystroke
+screen.onkeypress(r_paddle_up, 'Up')
+screen.onkeypress(r_paddle_down, 'Down')
 
 screen.exitonclick()
+
 
 #   TODO: THIS IS ALL NEW/DIFFERENT CODE
 
@@ -115,7 +117,7 @@ screen.exitonclick()
 #         player1 += 1
 #         score.clear()
 #         score.write(f"Player 1:{player1}   Player 2:{player2}", align='centre', font=("Arial", 26, "bold"))
-time.sleep(5)
+
 
 # def move_paddle(keystroke):
 #     if keystroke == onkeypress("Left"):
@@ -123,4 +125,4 @@ time.sleep(5)
         # y = either + or - the set y direction
         # keep running each paddle through this?
         # run this through a while true loop waiting for input
-
+mainloop()  # TODO: Changed sleep.time to mainloop()
